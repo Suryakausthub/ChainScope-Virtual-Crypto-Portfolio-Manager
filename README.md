@@ -1,28 +1,28 @@
 # CoinBrowser
-CoinBrowser is a tool for Freqtrade where the program writes pairs into text file to be used with spesific exchange, these pairs file is also used in the simulator.
 
-Data for this program is from CoinMarkedCap API.
+**CoinBrowser** is a desktop application built with **Qt and C++** that serves as a companion tool for the **Freqtrade** crypto trading bot. It allows users to manage cryptocurrency pairs, simulate investments, and visualize virtual portfolios using real-time data fetched from the **CoinMarketCap API**.
 
-If database does not exist upon startup the program creates coinhistory.db database from exiting json file.
+---
 
-The database is updated into own table from existing json file right before new json file is downloaded.
+## 🔧 Features
 
-Database can then be selected from droppdown in mainwindow.
+- 🔁 **Crypto Pair Management**  
+  Write selected trading pairs to a `.txt` file for use with Freqtrade on specific exchanges.
 
+- 📈 **Investment Simulator**  
+  Simulate fictional crypto buys/sells and manage a virtual portfolio. Supports partial sell amounts in USD.
 
-![Welcome screen](https://github.com/QTinman/CoinBrowser/blob/main/screencap.png)
+- 🗂 **Database Management**  
+  Automatically creates and updates a local SQLite database (`coinhistory.db`) from JSON files, maintaining historical data in versioned tables.
 
+- 🧩 **Freqtrade Integration**  
+  Compatible with Freqtrade via raw pairs file generation from Docker output. Example: `raw_binance.txt`.
 
-The txt files starting with "raw_" is created with command "docker-compose run --rm freqtrade list-pairs --exchange binance" and the table from the output copied to new file, example raw_binance.txt.
+---
 
-Invest simulator lets you do fictional crypto buys.
+## ⚙️ Getting Started
 
-To get crypto in simulator dropdown list do write to file in mainwindow and point to that file in settings.
-
-![Welcome screen](https://github.com/QTinman/CoinBrowser/blob/main/simulator.png)
-
-Crypto invest simulator
-
-![Welcome screen](https://github.com/QTinman/CoinBrowser/blob/main/settings.png)
-
-Typical settings.
+1. **Setup Freqtrade Pairs File**  
+   Run the following command and copy the table output to a text file:
+   ```bash
+   docker-compose run --rm freqtrade list-pairs --exchange binance
